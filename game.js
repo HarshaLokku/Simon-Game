@@ -10,8 +10,13 @@ var level = 0;
 
 $(document).keypress(function(){
    if(!active) {
-      $("#level-title").text("Level "+ level)
-      nextSequence()
+      level = 0;
+      $("#level-title").text("Let's Begin!")
+
+      setTimeout(function () {
+         nextSequence();
+      }, 2000);
+
       active = true
    }
 })
@@ -66,7 +71,7 @@ function animatePress(currentColour){
 
 function checkAnswer(currentLevel) {
    if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
-      
+      // Checks until users clicks all the colours in correct sequence. 
       if (userClickedPattern.length === gamePattern.length){
          setTimeout(function () {
             nextSequence();
